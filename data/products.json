@@ -1,0 +1,16 @@
+[
+  {
+    "CategoryId": 1,
+    "name": "Songket",
+    "stock": 25,
+    "price": 150000,
+    "code": "001-1787031942750"
+  },
+  {
+    "CategoryId": 2,
+    "name": "Pakaian kain tenun",
+    "stock": 50,
+    "price": 200000,
+    "code": "002-1787031952760"
+  }
+]

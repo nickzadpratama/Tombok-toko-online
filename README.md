@@ -1,0 +1,3 @@
+Tentang toko:
+
+Tombok (Toko Oleh-oleh Lombok), pusat belanja oleh-oleh Lombok terlengkap dan terpercaya. Kami hadir untuk menjembatani para pengrajin lokal dan pencinta budaya Lombok di mana pun berada. Menyediakan berbagai produk autentik mulai dari keindahan kain tenun tradisional, kerajinan tangan estetik, hingga camilan khas yang kaya akan rempah. Setiap produk yang kami kurasi membawa cerita, dedikasi, dan kehangatan khas masyarakat Sasak.

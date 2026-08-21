@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product - National Geographic Style</title>
+    <style>
+        /* Gaya Dasar & Tema */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 40px 20px;
+            color: #111;
+        }
+
+        /* Container Form */
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border: 1px solid #e5e5e5;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Header Logo Khas NatGeo */
+        .form-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #111;
+            padding-bottom: 15px;
+        }
+
+        .natgeo-box {
+            width: 15px;
+            height: 25px;
+            background-color: #FFCC00; /* Kuning ikonik */
+            margin-right: 12px;
+            display: inline-block;
+        }
+
+        .form-header h2 {
+            font-size: 16px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 0;
+        }
+
+        /* Kelompok Input */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            color: #222;
+        }
+
+        /* Elemen Input, Select, & Textarea */
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group select {
+            width: 100%;
+            padding: 11px 12px;
+            font-size: 13px;
+            border: 1px solid #ccc;
+            background-color: #fafafa;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+        }
+
+        /* Efek Fokus Input */
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #111;
+            background-color: #fff;
+        }
+
+        /* Baris Dua Kolom untuk Stock dan Price */
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        /* Tombol Simpan / Add */
+        .btn-add {
+            width: 100%;
+            background-color: #111;
+            color: #fff;
+            border: none;
+            padding: 14px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .btn-add:hover {
+            background-color: #FFCC00;
+            color: #111;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <!-- Header Identitas Tema -->
+        <div class="form-header">
+            <div class="natgeo-box"></div>
+            <h2>Add New Product</h2>
+        </div>
+
+        <!-- Formulir Tambah Produk -->
+        <form action="#" method="POST">
+            
+            <!-- Input: name -->
+            <div class="form-group">
+                <label for="name">Product Name</label>
+                <input type="text" id="name" name="name" placeholder="e.g. Kain Tenun Songket" required>
+            </div>
+
+            <!-- Baris Bersama: stock & price -->
+            <div class="form-row">
+                <!-- Input: stock -->
+                <div class="form-group">
+                    <label for="stock">Stock</label>
+                    <input type="number" id="stock" name="stock" min="0" placeholder="10" required>
+                </div>
+
+                <!-- Input: price -->
+                <div class="form-group">
+                    <label for="price">Price (IDR)</label>
+                    <input type="number" id="price" name="price" min="0" placeholder="95000" required>
+                </div>
+            </div>
+
+            <!-- Input: CategoryId -->
+            <div class="form-group">
+                <label for="CategoryId">Category ID</label>
+                <select id="CategoryId" name="CategoryId" required>
+                    <option value="" disabled selected>Select Category</option>
+                    <% categories.forEach(el => { %>
+                    <option value="<%= el.id %>"><%= el.name %></option>
+                    <% }) %>
+                </select>
+            </div>
+
+            <!-- Input: imageURL -->
+            <div class="form-group">
+                <label for="imageURL">Image URL</label>
+                <input type="text" id="imageURL" name="imageURL" placeholder="https://example.com" required>
+            </div>
+
+            <!-- Tombol Submit -->
+            <button type="submit" class="btn-add">Add Product</button>
+        </form>
+    </div>
+
+</body>
+</html>

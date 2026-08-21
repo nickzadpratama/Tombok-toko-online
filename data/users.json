@@ -1,0 +1,14 @@
+[
+  {
+    "username": "J. K. Rowling",
+    "email": "rowling@gmail.com",
+    "password": "123asdddd",
+    "role": "seller"
+  },
+  {
+    "username": "George R. R. Martin",
+    "email": "martin@gmail.com",
+    "password": "345treskl",
+    "role": "buyer"
+  }
+]
