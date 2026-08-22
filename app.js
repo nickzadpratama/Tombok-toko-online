@@ -2,7 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const Controller = require('./controllers/controller');
 const app = express();
-const port = 3004;
+const port = 3000;
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: false}));
@@ -42,7 +42,7 @@ app.get('/', Controller.lp);
 app.get('/products/add', Controller.getAdd);
 app.post('/products/add', Controller.postAdd);
 
-app.get('/:userId', isLoggedIn, Controller.home);
+// app.get('/:userId', isLoggedIn, Controller.home);
 app.get('/:userId/products', Controller.products);
 app.get('/:userId/products/:productId', Controller.productById);
 

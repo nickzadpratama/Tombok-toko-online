@@ -6,12 +6,16 @@ const nodemailer = require('nodemailer');
 
 function sendWelcomeEmail(targetEmail, username) {
   const transporter = nodemailer.createTransport({
-      host: 'localhost',
-      port: 5432,
+      host: 'smtp.gmail.com',
+      port: 465,
       secure: true, // Menggunakan enkripsi aman TLS
+      tls : { 
+            rejectUnauthorized : true , 
+            minVersion : 'TLSv1.2' 
+        },
       auth: {
           user: 'nickzadpratama7@gmail.com',      // Email pengirim
-          pass: 'rahasia-password-aplikasi' // Kata sandi khusus aplikasi
+          pass: 'dmybraopnmrjphwy' // Kata sandi khusus aplikasi
       }
   });
 
@@ -96,7 +100,7 @@ class Controller {
                   if (isValidPassword) {
                     req.session.userId = user.id;
                     req.session.role = user.role;
-                    return res.redirect(`/${user.id}`);
+                    return res.redirect(`/${user.id}/products`);
                   }
                 }
                 res.redirect('/login?error=Email atau password salah');
@@ -133,7 +137,21 @@ class Controller {
         }
     }
 
-    static async home(req, res) {
+    // static async home(req, res) {
+    //     try {
+    //         const {userId} = req.params;
+    //         const {message} = req.query;
+    //         let notifikasi = await Product.notifikasi();
+    //         const products = await Product.findAll({ include: [Category] });
+    //         let categories = await Category.findAll();
+    //         res.render('home', { products, userId, categories, notifikasi, message, getFormatPrice });
+    //     } catch (error) {
+    //         console.log(error);
+    //         res.send(error);
+    //     }
+    // }
+
+    static async products(req, res) {
         try {
             const {userId} = req.params;
             const {message} = req.query;
@@ -141,16 +159,6 @@ class Controller {
             const products = await Product.findAll({ include: [Category] });
             let categories = await Category.findAll();
             res.render('home', { products, userId, categories, notifikasi, message, getFormatPrice });
-        } catch (error) {
-            console.log(error);
-            res.send(error);
-        }
-    }
-
-    static async products(req, res) {
-        try {
-            let products = await Product.findAll();
-            res.send(products);
         } catch (error) {
             console.log(error);
             res.send(error);

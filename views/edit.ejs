@@ -154,7 +154,6 @@
             <div class="form-group">
                 <label for="CategoryId">Category ID</label>
                 <select id="CategoryId" name="CategoryId" required>
-                    <option value="" disabled selected>Select Category</option>
                     <% categories.forEach(el => { %>
                     <option <%= product.id === el.id ? "selected" : "" %> value="<%= el.id %>"><%= el.name %></option>
                     <% }) %>
@@ -168,7 +167,7 @@
             </div>
 
             <!-- Tombol Submit -->
-            <button type="submit" class="btn-add">Add Product</button>
+            <button type="submit" class="btn-add">Edit Product</button>
         </form>
     </div>
 

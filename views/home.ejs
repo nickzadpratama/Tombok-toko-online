@@ -188,17 +188,18 @@
     <header>
         <div class="logo-area">
             <div class="logo-box"></div>
-            <div class="logo-text">National<br>Geographic</div>
+            <div class="logo-text">Tombok<br>Store</div>
         </div>
         <nav>
             <ul>
-                <li><a href="#">All</a></li>
+                <li><a href="/<%= userId %>/products">All</a></li>
                 <% categories.forEach(el => { %>
                     <li><a href="/<%= userId %>/categories/<%= el.id %>"><%= el.name %></a></li>
                 <% }) %>
             </ul>
         </nav>
         <div class="right-menu">
+            <span><a href="/products/add">Add Product</a></span>
             <span><a href="/logout">Logout</a></span>
         </div>
     </header>
