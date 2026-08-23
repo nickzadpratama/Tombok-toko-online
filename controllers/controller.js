@@ -262,6 +262,7 @@ class Controller {
 
     static async getAdd(req, res) {
         try {
+            // const {userId} = getFormatPrice.params;
             let categories = await Category.findAll();
             res.render("add", {categories});
         } catch (error) {
@@ -272,9 +273,10 @@ class Controller {
 
     static async postAdd(req, res) {
         try {
+            const {userId} = req.params;
             const {name, stock, price, CategoryId, imageURL} = req.body;
             await Product.create({name, stock, price, CategoryId, imageURL});
-            res.redirect("/products");
+            res.redirect(`/${userId}/products`);
         } catch (error) {
             if (error.name === "SequelizeValidationError") {
                 let message = error.errors.map(el => {
@@ -289,10 +291,10 @@ class Controller {
 
     static async getDelete(req, res) {
         try {
-            const {productId} = req.params;
+            const {userId, productId} = req.params;
             let product = await Product.findByPk(productId);
             await product.destroy(productId);
-            res.redirect(`/products?message=${product.name} has been delete`);
+            res.redirect(`/${userId}/products?message=${product.name} has been delete`);
         } catch (error) {
             console.log(error);
             res.send(error);
@@ -328,10 +330,10 @@ class Controller {
 
     static async getEdit(req, res) {
         try {
-            const {productId} = req.params;
+            const {userId, productId} = req.params;
             let product = await Product.findByPk(productId);
             let categories = await Category.findAll();
-            res.render("edit", {product, categories});
+            res.render("edit", {product, categories, userId});
         } catch (error) {
             console.log(error);
             res.send(error);
@@ -340,9 +342,16 @@ class Controller {
 
     static async postEdit(req, res) {
         try {
+            const {userId, productId} = req.params;
             const {name, stock, price, CategoryId, imageURL} = req.body;
-            await Product.create({name, stock, price, CategoryId, imageURL});
-            res.redirect("/products");
+            await Product.update({name, stock, price, CategoryId, imageURL},
+                {
+                    where: {
+                        id: productId
+                    }
+                }
+            );
+            res.redirect(`/${userId}/products`);
         } catch (error) {
             console.log(error);
             res.send(error);

@@ -359,8 +359,8 @@
                     <li><%= product.description %></li>
                     <li><span>Product Code:</span> <%= product.code %></li>
                 </ul>
-                <a href="/products/<%= product.id %>/edit">Edit Product</a><br>
-                <a href="/products/delete/<%= product.id %>">Delete Product</a>
+                <a href="/<%= userId %>/products/<%= product.id %>/edit">Edit Product</a><br>
+                <a href="/<%= userId %>/products/delete/<%= product.id %>">Delete Product</a>
             </div>
         </section>
     </main>

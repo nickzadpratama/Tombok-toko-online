@@ -39,8 +39,8 @@ app.post('/login', isGuest, Controller.postLogin);
 app.get('/logout', Controller.getLogout)
 
 app.get('/', Controller.lp);
-app.get('/products/add', Controller.getAdd);
-app.post('/products/add', Controller.postAdd);
+app.get('/:userId/products/add', Controller.getAdd);
+app.post('/:userId/products/add', Controller.postAdd);
 
 // app.get('/:userId', isLoggedIn, Controller.home);
 app.get('/:userId/products', Controller.products);
@@ -53,10 +53,10 @@ app.get('/:userId/categories/:categoriesId', Controller.categoryById);
 
 app.get('/users', Controller.users);
 
-app.get('/products/:productId/edit', Controller.getEdit);
-app.post('/products/:productId/edit', Controller.postEdit);
+app.get('/:userId/products/:productId/edit', Controller.getEdit);
+app.post('/:userId/products/:productId/edit', Controller.postEdit);
 
-app.get('/products/delete/:productId', Controller.getDelete);
+app.get('/:userId/products/delete/:productId', Controller.getDelete);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
