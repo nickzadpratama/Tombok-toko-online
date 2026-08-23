@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
       });
       return `${notif[0].dataValues.total} PRODUCTS`
     }
+
+    get description() {
+      return `${this.name}, stock: ${this.stock}, (code: ${this.code})`
+    }
   }
   Product.init({
     CategoryId: {

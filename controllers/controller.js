@@ -319,7 +319,7 @@ class Controller {
                 UserId: userId, 
                 ProductId: productId, 
                 quantity});
-            res.redirect(`/products`);
+            res.redirect(`/${userId}/products`);
         } catch (error) {
             console.log(error);
             res.send(error);
